@@ -11,6 +11,7 @@ return [
     | the validator class. Some of these rules have multiple versions such
     | as the size rules. Feel free to tweak each of these messages here.
     |
+    | Thanks to: https://gist.github.com/johnhout/055d2c039cfb7574d657
     */
 
     "accepted"             => ":attribute dient te worden geaccepteerd.",
