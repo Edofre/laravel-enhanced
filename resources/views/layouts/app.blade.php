@@ -19,6 +19,14 @@
 <body>
 <div id="app">
     @include('layouts._header')
+
+    <div class="page-wrapper">
+        <div class="container">
+            @include('layouts._flash')
+            @include('layouts._errors')
+        </div>
+    </div>
+
     @yield('content')
 </div>
 
