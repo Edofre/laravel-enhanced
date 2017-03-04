@@ -5,25 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 /**
- * Class HomeController
+ * Class DashboardController
  * @package App\Http\Controllers
  */
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
-     * Show the home index page
+     * Show the application dashboard.
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home.index');
+        return view('dashboard.index');
     }
 }
