@@ -8,7 +8,7 @@
                     <div class="panel-heading">Dashboard</div>
 
                     <div class="panel-body">
-                        You are logged in!
+                        {{ trans('auth.general.you_are_logged_in') }}
                     </div>
                 </div>
             </div>
