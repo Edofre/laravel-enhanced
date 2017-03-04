@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('page_title')
+    {{ trans('auth.email.reset_password') }}
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

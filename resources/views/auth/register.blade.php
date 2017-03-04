@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('page_title')
+    {{ trans('auth.register.register') }}
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
