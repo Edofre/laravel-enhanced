@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
  */
 class Controller extends \App\Http\Controllers\Controller
 {
+    const PAGINATION_SIZE = 50;
     /** @var null */
     public $breadcrumb_route = null;
     /** @var null */

@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="panel-body">
-            @include('common._search')
+            @include('layouts._search')
             <table class="table table-responsive" id="users-table">
                 <thead>
                 <th>{{ trans('users.name') }}</th>

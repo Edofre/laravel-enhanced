@@ -35,9 +35,9 @@ class UserController extends Controller
             $users = User::where('name', 'LIKE', '%' . $search . '%')
                 ->orWhere('email', 'LIKE', '%' . $search . '%')
                 ->orderBy('name')
-                ->paginate(User::PAGINATION_SIZE);
+                ->paginate(self::PAGINATION_SIZE);
         } else {
-            $users = User::paginate(User::PAGINATION_SIZE);
+            $users = User::paginate(self::PAGINATION_SIZE);
         }
 
         return view('admin.users.index', [
