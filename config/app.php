@@ -180,6 +180,11 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
+         * Community packages
+         */
+        Collective\Html\HtmlServiceProvider::class,
+
+        /*
          * Development Service Providers
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
@@ -232,6 +237,11 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Community packages
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];
