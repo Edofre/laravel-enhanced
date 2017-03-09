@@ -15,12 +15,11 @@ Auth::routes();
 
 //
 Route::get('/', 'HomeController@index')->name('home');
+// Default route
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 /** Admin route group */
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.'], function () {
-    // Default route
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-
     // User management
     Route::resource('users', 'Admin\UserController');
 });
