@@ -30,7 +30,7 @@ class Controller extends \App\Http\Controllers\Controller
      */
     protected function getBreadcrumbs($add_breadcrumbs = [])
     {
-        $breadcrumbs[] = ['route' => route('admin.dashboard'), 'name' => trans('admin.dashboard')];
+        $breadcrumbs[] = ['route' => route('dashboard'), 'name' => trans('admin.dashboard')];
         $breadcrumbs[] = ['route' => $this->breadcrumb_route, 'name' => $this->breadcrumb_name];
         foreach ($add_breadcrumbs as $breadcrumb) {
             $breadcrumbs[] = $breadcrumb;
