@@ -14,11 +14,13 @@
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+    static $email;
+    static $name;
     static $password;
 
     return [
-        'name'           => $faker->name,
-        'email'          => $faker->unique()->safeEmail,
+        'name'           => !empty($name) ? $name : $faker->name,
+        'email'          => !empty($email) ? $email : $faker->unique()->safeEmail,
         'password'       => !empty($password) ? $password : bcrypt('hunter'),
         'remember_token' => str_random(10),
     ];
@@ -33,23 +35,34 @@ $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\NewsCategory::class, function ($faker) {
+    static $is_public;
+    static $name;
+    static $description;
+    static $image_url;
+
     return [
-        'is_public'   => $faker->boolean(80), // We want more yes than no
-        'name'        => ucfirst($faker->word),
-        'description' => $faker->text,
-        'image_url'   => $faker->image,
+        'is_public'   => !is_null($is_public) ? $is_public : $faker->boolean(80), // We want more yes than no
+        'name'        => !empty($name) ? $name : ucfirst($faker->word),
+        'description' => !empty($description) ? $description : $faker->text,
+        'image_url'   => !empty($image_url) ? $image_url : $faker->imageUrl,
     ];
 });
 
 $factory->define(App\Models\NewsItem::class, function ($faker) {
+    static $is_public;
+    static $title;
+    static $intro;
+    static $content;
+    static $image_url;
+
     return [
-        'is_public'        => $faker->boolean(80), // We want more yes than no
+        'is_public'        => !is_null($is_public) ? $is_public : $faker->boolean(80), // We want more yes than no
         'news_category_id' => function () {
             return factory(App\Models\NewsCategory::class)->create()->id;
         },
-        'title'            => ucfirst($faker->words(3, true)),
-        'intro'            => $faker->text(100),
-        'content'          => $faker->text,
-        'image_url'        => $faker->image,
+        'title'            => !empty($title) ? $title : ucfirst($faker->words(3, true)),
+        'intro'            => !empty($intro) ? $intro : $faker->text(100),
+        'content'          => !empty($content) ? $content : $faker->text,
+        'image_url'        => !empty($image_url) ? $image_url : $faker->imageUrl,
     ];
 });

@@ -5,8 +5,11 @@ namespace Tests\Unit;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * Class UserTest
+ * @package Tests\Unit
+ */
 class UserTest extends TestCase
 {
     use DatabaseMigrations;
@@ -15,7 +18,7 @@ class UserTest extends TestCase
      * A basic test example.
      * @return void
      */
-    public function testExample()
+    public function testCreateUser()
     {
         $user = factory(User::class)->create([
             'email' => 'edo@example.com',
