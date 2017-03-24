@@ -6,6 +6,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 /**
  * Class Controller
@@ -14,4 +16,16 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * @param $image
+     * @return mixed
+     */
+    public function getImage($image)
+    {
+        if (!File::exists($image = storage_path("app/{$image}"))) {
+            abort(404);
+        }
+        return Image::make($image)->response();
+    }
 }

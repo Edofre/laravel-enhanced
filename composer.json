@@ -14,7 +14,8 @@
     "laravel/passport": "2.0.*",
     "laravelcollective/html": "5.4.*",
     "edofre/laravel-sluggable": "1.5.2",
-    "edofre/laravel-softdelete-cleanup": "V1.1.0"
+    "edofre/laravel-softdelete-cleanup": "V1.1.0",
+    "intervention/image": "2.3.11."
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

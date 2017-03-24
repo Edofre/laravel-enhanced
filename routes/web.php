@@ -15,6 +15,7 @@ Auth::routes();
 
 // Landing page
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/images/{image}', ['as' => 'image', 'uses' => 'Controller@getImage']);
 
 Route::get('/news', ['uses' => 'NewsController@index'])->name('front.news.index');
 Route::get('/news/{newsCategory}', ['uses' => 'NewsController@category'])->name('front.news.category');
