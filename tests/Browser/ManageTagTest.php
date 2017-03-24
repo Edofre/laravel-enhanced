@@ -15,7 +15,7 @@ class ManageTagTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * Login
+     * Tag index
      * @return void
      */
     public function testTagIndex()
@@ -25,9 +25,35 @@ class ManageTagTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
+            // Make sure we can't see it without logging in
+            $browser->visit(route('admin.tags.index'))
+                ->assertDontSee('View all tags')// We don't see the title
+                ->assertSee('Login'); // We see the login page
+
             $browser->loginAs($user)
-                ->visit(route('admin.newsItems.index'))
-                ->assertSee('View all news items');
+                ->visit(route('admin.tags.index'))
+                ->assertSee('View all tags');
+        });
+    }
+
+    /**
+     * Tag create page
+     * @return void
+     */
+    public function testTagCreate()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'edo@example.com',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit(route('admin.tags.create'))
+                ->assertSee('Create tag')
+                ->type('name', 'My cool new tag!')
+                ->press('Save')
+                ->assertSee('My cool new tag!')
+                ->assertSee('Show My cool new tag!');
         });
     }
 }

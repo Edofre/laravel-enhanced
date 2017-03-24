@@ -15,7 +15,7 @@ class LoginTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * Login
+     * Login a user
      * @return void
      */
     public function testCorrectLogin()
@@ -38,13 +38,14 @@ class LoginTest extends DuskTestCase
     }
 
     /**
-     * Login
+     * Tru to login with incorrect details
      * @return void
      */
     public function testInCorrectLogin()
     {
         $user = factory(User::class)->create([
-            'email' => 'edo@example.com',
+            'email'    => 'edo@example.com',
+            'password' => bcrypt('hunter'),
         ]);
 
         $this->browse(function ($browser) use ($user) {

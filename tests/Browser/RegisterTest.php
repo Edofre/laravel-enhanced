@@ -15,10 +15,10 @@ class RegisterTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * Login
+     * Register
      * @return void
      */
-    public function testRegistration()
+    public function testSuccessfulRegistration()
     {
         $this->browse(function ($browser) {
             $browser->visit(route('register'))
@@ -36,9 +36,10 @@ class RegisterTest extends DuskTestCase
     }
 
     /**
-     *
+     * Register with incorrect confirmation password
+     * @return void
      */
-    public function testIncorrectConfirmationRegistration()
+    public function testIncorrectConfirmationPasswordRegistration()
     {
         $this->browse(function ($browser) {
             $browser->visit(route('register'))
@@ -52,10 +53,12 @@ class RegisterTest extends DuskTestCase
     }
 
     /**
-     *
+     * Register with an exiting email
+     * @return void
      */
     public function testIncorrectEmailRegistration()
     {
+        // Create a user with the ricksanchez@C-132.com mail so we can check for duplicates
         $user = factory(User::class)->create([
             'email' => 'ricksanchez@C-132.com',
         ]);
