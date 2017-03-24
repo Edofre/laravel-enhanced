@@ -13,6 +13,7 @@
     "laravel/tinker": "~1.0",
     "laravel/passport": "2.0.*",
     "laravelcollective/html": "5.4.*",
+    "edofre/laravel-sluggable": "1.5.2",
     "edofre/laravel-softdelete-cleanup": "V1.1.0"
   },
   "require-dev": {
@@ -55,7 +56,6 @@
     ]
   },
   "config": {
-    "preferred-install": "dist",
-    "sort-packages": true
+    "preferred-install": "dist"
   }
 }
