@@ -15,21 +15,44 @@ class LoginTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * A Dusk test example.
+     * Login
      * @return void
      */
-    public function testExample()
+    public function testCorrectLogin()
     {
         $user = factory(User::class)->create([
             'email' => 'edo@example.com',
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit('/login')
+            $browser->visit(route('login'))
                 ->type('email', $user->email)
                 ->type('password', 'hunter')
                 ->press('Login')
-                ->assertPathIs('/home');
+                ->assertPathIs('/dashboard')
+                ->assertSee('You are logged in!');
+
+            // Logout
+            $browser->clickLink('Logout');
+        });
+    }
+
+    /**
+     * Login
+     * @return void
+     */
+    public function testInCorrectLogin()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'edo@example.com',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->visit(route('login'))
+                ->type('email', $user->email)
+                ->type('password', '******')
+                ->press('Login')
+                ->assertSee(trans('auth.failed'));
         });
     }
 }

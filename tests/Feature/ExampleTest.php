@@ -7,6 +7,10 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * Class ExampleTest
+ * @package Tests\Feature
+ */
 class ExampleTest extends TestCase
 {
     /**
@@ -15,8 +19,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
-
+        $response = $this->get(route('home'));
         $response->assertStatus(200);
     }
 }
