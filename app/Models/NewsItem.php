@@ -15,7 +15,7 @@ use Edofre\Sluggable\SlugOptions;
  */
 class NewsItem extends Model
 {
-    use SoftDeletes, HasSlug, HasTags;
+    use SoftDeletes, HasSlug;
 
     /** @var array */
     protected $dates = ['deleted_at'];
@@ -25,7 +25,6 @@ class NewsItem extends Model
      * @var array
      */
     protected $fillable = [
-        'order_index',
         'is_public',
         'news_category_id',
         'title',
@@ -63,35 +62,10 @@ class NewsItem extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function calendarItems()
-    {
-        return $this->hasMany(CalendarItem::class, 'news_item_id');
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function newsCategory()
     {
         return $this->belongsTo(NewsCategory::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'news_item_tags', 'news_item_id', 'tag_id');
-    }
-
-    /**
-     * @return int
-     */
-    public function getHighestIndex()
-    {
-        $news_item = NewsItem::limit(1)->where('id', '<>', $this->id)->orderby('order_index', 'desc')->first();
-        return is_null($news_item) ? 0 : $news_item->order_index;
     }
 }

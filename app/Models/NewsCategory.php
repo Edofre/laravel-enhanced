@@ -8,6 +8,10 @@ use App\Traits\SoftDeletes;
 use Edofre\Sluggable\HasSlug;
 use Edofre\Sluggable\SlugOptions;
 
+/**
+ * Class NewsCategory
+ * @package App\Models
+ */
 class NewsCategory extends Model
 {
     use SoftDeletes, HasSlug;
@@ -16,7 +20,6 @@ class NewsCategory extends Model
     protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
-     *
      * @var array
      */
     protected $fillable = [
