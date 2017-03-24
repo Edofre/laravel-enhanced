@@ -32,5 +32,11 @@
 
 <!-- Scripts -->
 <script src="{{ mix('/js/app.js') }}"></script>
+<!-- Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<!-- TinyMCE -->
+<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+<!-- View javascript -->
+@yield('js_footer')
 </body>
 </html>

@@ -35,6 +35,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
         if (!empty($model)) {
             $selected_form_data[$model->id] = $model->$model_attribute;
         }
+
         return $selected_form_data;
     }
 
