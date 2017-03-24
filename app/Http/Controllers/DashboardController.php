@@ -26,4 +26,12 @@ class DashboardController extends Controller
     {
         return view('dashboard.index');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function api()
+    {
+        return view('dashboard.api');
+    }
 }

@@ -15,8 +15,10 @@ Auth::routes();
 
 //
 Route::get('/', 'HomeController@index')->name('home');
+
 // Default route
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('dashboard/api', 'DashboardController@api')->name('api');
 
 /** Admin route group */
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.'], function () {
