@@ -22,6 +22,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
+                    <li><a href="{{ route('front.news.index') }}">{{ trans('newsItems.news') }}</a></li>
                     <li><a href="{{ route('login') }}">{{ trans('auth.general.login') }}</a></li>
                     <li><a href="{{ route('register') }}">{{ trans('auth.general.register') }}</a></li>
                 @else

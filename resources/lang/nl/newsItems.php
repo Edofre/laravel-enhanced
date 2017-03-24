@@ -21,4 +21,7 @@ return [
 
     /** Tags */
     'tags'             => 'Tags',
+
+    /** General */
+    'news'             => 'Nieuws',
 ];

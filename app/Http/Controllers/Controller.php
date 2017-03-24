@@ -28,4 +28,14 @@ class Controller extends BaseController
         }
         return Image::make($image)->response();
     }
+
+    /**
+     * @param $item
+     */
+    protected function authorizeItem($item)
+    {
+        if ($item->is_public == false) {
+            abort(404);
+        }
+    }
 }

@@ -23,6 +23,18 @@ class Model extends \Illuminate\Database\Eloquent\Model
     }
 
     /**
+     *
+     */
+    public function getFrontImageUrlAttribute()
+    {
+        $image_url = 'no_image.jpg';
+        if (!is_null($this->image_url)) {
+            $image_url = $this->image_url;
+        }
+        return $image_url;
+    }
+
+    /**
      * @param $self_attribute
      * @param $model_attribute
      * @param $model_class

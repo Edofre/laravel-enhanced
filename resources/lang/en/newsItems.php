@@ -20,5 +20,8 @@ return [
     'image_url'        => 'Image',
 
     /** Tags */
-    'tags'             => 'Tags'
+    'tags'             => 'Tags',
+
+    /** General */
+    'news'             => 'News',
 ];

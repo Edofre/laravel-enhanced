@@ -1,14 +1,14 @@
-
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
 // Select2
 @import "node_modules/select2/src/scss/core";
 // Select2-bootstrap
 @import "node_modules/select2-bootstrap-theme/src/select2-bootstrap";
+
+.news-list .col-sm-4:nth-child(3n+1) {
+  clear: both;
+}
