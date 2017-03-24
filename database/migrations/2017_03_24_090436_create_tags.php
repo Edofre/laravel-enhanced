@@ -36,7 +36,7 @@ class CreateTags extends Migration
             $table->softDeletes();
         });
 
-        Schema::create(CreateNewsItems::TABLE_NAME . '_' . self::TABLE_NAME, function (Blueprint $table) {
+        Schema::create('news_item_' . self::TABLE_NAME, function (Blueprint $table) {
             $table->integer('news_item_id')->unsigned()->index();
             $table->foreign('news_item_id')->references('id')->on(CreateNewsItems::TABLE_NAME)->onUpdate('cascade')->onDelete('cascade');
             $table->integer('tag_id')->unsigned()->index();
@@ -50,6 +50,9 @@ class CreateTags extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('news_item_' . self::TABLE_NAME);
         Schema::dropIfExists(self::TABLE_NAME);
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
