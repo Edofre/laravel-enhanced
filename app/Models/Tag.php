@@ -4,42 +4,43 @@ namespace App\Models;
 
 use App\Database\Eloquent\Model;
 use App\Observers\ByWhoObserver;
-use App\Traits\HasTags;
 use App\Traits\SoftDeletes;
 use Edofre\Sluggable\HasSlug;
 use Edofre\Sluggable\SlugOptions;
 
 /**
- * Class NewsItem
+ * Class Tag
  * @package App\Models
  */
-class NewsItem extends Model
+class Tag extends Model
 {
-    use SoftDeletes, HasSlug, HasTags;
+    use SoftDeletes, HasSlug;
 
+    /** Constant to notify the system this is a new tag */
+    const NEW_KEY = 'new:';
     /** @var array */
     protected $dates = ['deleted_at'];
-
     /**
      * The attributes that are mass assignable.
      * @var array
      */
     protected $fillable = [
-        'is_public',
-        'news_category_id',
-        'title',
-        'intro',
-        'content',
-        'image_url',
+        'name',
     ];
 
     /**
-     * Get the form data, id and name value pairs
-     * @return mixed
+     * @param $name
+     * @return Tag
      */
-    public static function getFormData()
+    public static function findOrCreateNew($name)
     {
-        return self::orderBy('title')->pluck('title', 'id');
+        $tag = self::where('name', $name)->first();
+        if (is_null($tag)) {
+            $tag = new Tag();
+            $tag->name = $name;
+            $tag->save();
+        }
+        return $tag;
     }
 
     /**
@@ -48,7 +49,7 @@ class NewsItem extends Model
     protected static function boot()
     {
         parent::boot();
-        NewsItem::observe(new ByWhoObserver());
+        Tag::observe(new ByWhoObserver());
     }
 
     /**
@@ -57,23 +58,15 @@ class NewsItem extends Model
     public function getSlugOptions()
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
+            ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tags()
+    public function newsItems()
     {
-        return $this->belongsToMany(Tag::class, 'news_item_tags', 'news_item_id', 'tag_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function newsCategory()
-    {
-        return $this->belongsTo(NewsCategory::class);
+        return $this->belongsToMany(NewsItem::class, 'news_item_tags', 'tag_id', 'news_item_id');
     }
 }

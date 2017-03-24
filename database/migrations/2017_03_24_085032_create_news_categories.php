@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class CreateNewsCategories
+ */
 class CreateNewsCategories extends Migration
 {
     const TABLE_NAME = 'news_categories';

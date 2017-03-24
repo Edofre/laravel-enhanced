@@ -5,11 +5,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateNewsItems
+ * Class CreateTags
  */
-class CreateNewsItems extends Migration
+class CreateTags extends Migration
 {
-    const TABLE_NAME = 'news_items';
+    const TABLE_NAME = 'tags';
 
     /**
      * Run the migrations.
@@ -21,13 +21,8 @@ class CreateNewsItems extends Migration
             $table->increments('id');
 
             $table->string('slug')->unique()->nullable();
-            $table->integer('news_category_id')->unsigned()->index()->nullable();
-            $table->boolean('is_public')->default(0);
 
-            $table->string('title');
-            $table->text('intro')->nullable();
-            $table->text('content')->nullable();
-            $table->string('image_url')->nullable();
+            $table->string('name');
 
             $table->integer('created_by')->unsigned()->nullable()->index();
             $table->integer('updated_by')->unsigned()->nullable()->index();
@@ -39,8 +34,13 @@ class CreateNewsItems extends Migration
 
             $table->timestamps();
             $table->softDeletes();
+        });
 
-            $table->foreign('news_category_id')->references('id')->on(CreateNewsCategories::TABLE_NAME)->onUpdate('cascade')->onDelete('set null');
+        Schema::create(CreateNewsItems::TABLE_NAME . '_' . self::TABLE_NAME, function (Blueprint $table) {
+            $table->integer('news_item_id')->unsigned()->index();
+            $table->foreign('news_item_id')->references('id')->on(CreateNewsItems::TABLE_NAME)->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')->on(self::TABLE_NAME)->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
