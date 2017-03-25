@@ -80,4 +80,31 @@ class ManageTagTest extends DuskTestCase
                 ->assertSee('Show My Test Tag');
         });
     }
+
+    /**
+     * Tag update page
+     * @return void
+     */
+    public function testTagUpdate()
+    {
+        // Create a user so we can login and see tags
+        $user = factory(User::class)->create([
+            'email' => 'edo@example.com',
+        ]);
+
+        // Create a tag
+        $tag = factory(Tag::class)->create([
+            'name' => 'My Test Tag',
+        ]);
+
+        $this->browse(function ($browser) use ($user, $tag) {
+            $browser->loginAs($user)
+                ->visit(route('admin.tags.show', [$tag->id]))
+                ->assertSee('Show My Test Tag')
+                ->visit(route('admin.tags.edit', [$tag->id]))
+                ->type('name', 'My Updated Test Tag!')
+                ->press('Save')
+                ->assertSee('Show My Updated Test Tag');
+        });
+    }
 }
