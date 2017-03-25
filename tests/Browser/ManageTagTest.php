@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use App\Models\Tag;
 use App\User;
 use Tests\DuskTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -54,6 +55,29 @@ class ManageTagTest extends DuskTestCase
                 ->press('Save')
                 ->assertSee('My cool new tag!')
                 ->assertSee('Show My cool new tag!');
+        });
+    }
+
+    /**
+     * Tag create page
+     * @return void
+     */
+    public function testTagView()
+    {
+        // Create a user so we can login and see tags
+        $user = factory(User::class)->create([
+            'email' => 'edo@example.com',
+        ]);
+
+        // Create a tag
+        $tag = factory(Tag::class)->create([
+            'name' => 'My Test Tag',
+        ]);
+
+        $this->browse(function ($browser) use ($user, $tag) {
+            $browser->loginAs($user)
+                ->visit(route('admin.tags.show', [$tag->id]))
+                ->assertSee('Show My Test Tag');
         });
     }
 }
