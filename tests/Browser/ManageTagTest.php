@@ -16,7 +16,7 @@ class ManageTagTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * Tag index
+     * Tag index page
      * @return void
      */
     public function testTagIndex()
@@ -59,7 +59,7 @@ class ManageTagTest extends DuskTestCase
     }
 
     /**
-     * Tag create page
+     * Tag view page
      * @return void
      */
     public function testTagView()
@@ -104,7 +104,35 @@ class ManageTagTest extends DuskTestCase
                 ->visit(route('admin.tags.edit', [$tag->id]))
                 ->type('name', 'My Updated Test Tag!')
                 ->press('Save')
-                ->assertSee('Show My Updated Test Tag');
+                ->assertSee('Show My Updated Test Tag')
+                ->assertPathIs('/admin/tags/' . $tag->id);
+        });
+    }
+
+    /**
+     * Tag delete
+     * @return void
+     */
+    public function testTagDelete()
+    {
+        // Create a user so we can login and see tags
+        $user = factory(User::class)->create([
+            'email' => 'edo@example.com',
+        ]);
+
+        // Create a tag
+        $tag = factory(Tag::class)->create([
+            'name' => 'My Test Tag',
+        ]);
+
+        $this->browse(function ($browser) use ($user, $tag) {
+            $browser->loginAs($user)
+                ->visit(route('admin.tags.show', [$tag->id]))
+                ->assertSee('Show My Test Tag')
+                ->click('.delete-tag')
+                ->acceptDialog()
+                ->assertSee('Successfully deleted tag')
+                ->assertPathIs('/admin/tags');
         });
     }
 }
