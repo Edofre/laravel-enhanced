@@ -11,7 +11,7 @@
                         <div class="btn-group pull-right">
                             <a class="btn btn-primary" href="{!! route('admin.newsCategories.index') !!}">{{ trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}</a>
                             <a class="btn btn-warning" href="{!! route('admin.newsCategories.edit', $newsCategory->id) !!}">{{ trans('crud.edit_current', ['model'=> strtolower(trans('newsCategories.news_category'))]) }}</a>
-                            {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'title'=> trans('crud.delete'),'class' => 'btn btn-danger', 'onclick' => "return confirm('".trans('crud.are_you_sure')."')"]) !!}
+                            {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'title'=> trans('crud.delete'),'class' => 'btn btn-danger delete-news-category', 'onclick' => "return confirm('".trans('crud.are_you_sure')."')"]) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>
