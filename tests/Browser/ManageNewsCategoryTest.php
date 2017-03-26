@@ -73,7 +73,7 @@ class ManageNewsCategoryTest extends DuskTestCase
         ]);
 
         // Create a news category
-        $news_category  = factory(NewsCategory::class)->create([
+        $news_category = factory(NewsCategory::class)->create([
             'name' => 'My Test NewsCategory',
         ]);
 
@@ -139,6 +139,40 @@ class ManageNewsCategoryTest extends DuskTestCase
                 ->acceptDialog()
                 ->assertSee('Successfully deleted news category')
                 ->assertPathIs('/admin/newsCategories');
+        });
+    }
+
+    /**
+     * NewsCategory test all attributes
+     * @return void
+     */
+    public function testAllNewsCategoryAttributes()
+    {
+        // Create a user so we can login and see news categories
+        $user = factory(User::class)->create([
+            'email' => 'edo@example.com',
+        ]);
+
+        // Create a news category
+        $news_category = factory(NewsCategory::class)->create([
+            'name' => 'My Test NewsCategory',
+        ]);
+
+        $this->browse(function ($browser) use ($user, $news_category) {
+            $browser
+                ->loginAs($user)
+                ->visit(route('admin.newsCategories.show', [$news_category->id]))
+                ->assertSee('Show My Test NewsCategory')
+                ->visit(route('admin.newsCategories.edit', [$news_category->id]))
+                ->check('is_public')
+                ->type('name', 'My Updated Test NewsCategory!')
+                //                ->type('description', 'This is my test description')
+                ->attach('upload_file', __DIR__ . '/images/edofre.png')
+                ->press('Save')
+                ->assertSee('Show My Updated Test NewsCategory')
+                ->assertVisible('.news-category-image')
+                //                ->assertSee('his is my test description')
+                ->assertPathIs('/admin/newsCategories/' . $news_category->id);
         });
     }
 }

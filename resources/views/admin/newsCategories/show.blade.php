@@ -32,7 +32,7 @@
                                     <dt>{!! Form::label('name', trans('newsCategories.name')) !!}</dt>
                                     <dd>{{ $newsCategory->name }}</dd>
                                     <dt>{!! Form::label('image_url', trans('newsCategories.image_url')) !!}</dt>
-                                    <dd>@html($newsCategory->getImage($newsCategory->image_url, $newsCategory->name, ['width' => '300px']))</dd>
+                                    <dd>@html($newsCategory->getImage($newsCategory->image_url, $newsCategory->name, ['class' => 'news-category-image','width' => '300px']))</dd>
                                 </dl>
                             </div>
                         </div>
