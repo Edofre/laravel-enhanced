@@ -27,11 +27,13 @@ class ManageTagTest extends DuskTestCase
 
         $this->browse(function ($browser) use ($user) {
             // Make sure we can't see it without logging in
-            $browser->visit(route('admin.tags.index'))
+            $browser
+                ->visit(route('admin.tags.index'))
                 ->assertDontSee('View all tags')// We don't see the title
                 ->assertSee('Login'); // We see the login page
 
-            $browser->loginAs($user)
+            $browser
+                ->loginAs($user)
                 ->visit(route('admin.tags.index'))
                 ->assertSee('View all tags');
         });
@@ -48,7 +50,8 @@ class ManageTagTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->loginAs($user)
+            $browser
+                ->loginAs($user)
                 ->visit(route('admin.tags.create'))
                 ->assertSee('Create tag')
                 ->type('name', 'My cool new tag!')
@@ -75,7 +78,8 @@ class ManageTagTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user, $tag) {
-            $browser->loginAs($user)
+            $browser
+                ->loginAs($user)
                 ->visit(route('admin.tags.show', [$tag->id]))
                 ->assertSee('Show My Test Tag');
         });
@@ -98,7 +102,8 @@ class ManageTagTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user, $tag) {
-            $browser->loginAs($user)
+            $browser
+                ->loginAs($user)
                 ->visit(route('admin.tags.show', [$tag->id]))
                 ->assertSee('Show My Test Tag')
                 ->visit(route('admin.tags.edit', [$tag->id]))
@@ -126,7 +131,8 @@ class ManageTagTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user, $tag) {
-            $browser->loginAs($user)
+            $browser
+                ->loginAs($user)
                 ->visit(route('admin.tags.show', [$tag->id]))
                 ->assertSee('Show My Test Tag')
                 ->click('.delete-tag')
