@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
 use Flash;
+
+use App\User;
 use Illuminate\Http\Request;
 
 /**
