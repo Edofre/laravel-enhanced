@@ -3,6 +3,7 @@
 namespace Tests\Browser;
 
 use App\User;
+use Tests\Browser\Pages\Login;
 use Tests\DuskTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -25,7 +26,8 @@ class LoginTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit(route('login'))
+            $browser
+                ->visit(new Login)
                 ->type('email', $user->email)
                 ->type('password', 'hunter')
                 ->press('Login')
@@ -49,7 +51,8 @@ class LoginTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit(route('login'))
+            $browser
+                ->visit(route('login'))
                 ->type('email', $user->email)
                 ->type('password', '******')
                 ->press('Login')
