@@ -26,7 +26,7 @@ class Login extends BasePage
      */
     public function url()
     {
-        return route('login');
+        return '/login';
     }
 
     /**
