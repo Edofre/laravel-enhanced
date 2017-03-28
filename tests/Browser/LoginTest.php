@@ -28,9 +28,7 @@ class LoginTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser
                 ->visit(new Login)
-                ->type('@email', $user->email)
-                ->type('@password', 'hunter')
-                ->press('Login')
+                ->loginUser('edo@example.com')
                 ->assertPathIs('/dashboard')
                 ->assertSee('You are logged in!');
 

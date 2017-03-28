@@ -30,6 +30,19 @@ class Login extends BasePage
     }
 
     /**
+     * @param Browser $browser
+     * @param         $email
+     * @param string  $password
+     */
+    public function loginUser(Browser $browser, $email, $password = 'hunter')
+    {
+        $browser
+            ->type('@email', $email)
+            ->type('@password', $password)
+            ->press('Login');
+    }
+
+    /**
      * Get the element shortcuts for the page.
      * @return array
      */
