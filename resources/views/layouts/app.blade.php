@@ -22,6 +22,7 @@
 
     <div class="page-wrapper">
         <div class="container">
+            @include('layouts._breadcrumbs')
             @include('layouts._flash')
             @include('layouts._errors')
         </div>
