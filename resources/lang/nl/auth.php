@@ -52,6 +52,7 @@ return [
         'register'          => 'Registreer',
         'logout'            => 'Logout',
         'you_are_logged_in' => 'U bent ingelogd!',
+        'update_profile'    => 'Bewerk profiel',
     ],
 
     // Error messages

@@ -52,6 +52,7 @@ return [
         'register'          => 'Register',
         'logout'            => 'Logout',
         'you_are_logged_in' => 'You are logged in!',
+        'update_profile'    => 'Update profile',
     ],
 
     // Error messages

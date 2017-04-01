@@ -36,6 +36,9 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{!! route('admin.users.edit', [Auth::user()->id]) !!}">{{ trans('auth.general.update_profile') }} </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ trans('auth.general.logout') }}
