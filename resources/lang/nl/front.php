@@ -14,6 +14,7 @@ return [
     /** News */
     'news_items'            => 'Nieuws',
     'all_news'              => 'Al het nieuws',
+    'all_categories'        => 'Alle categorieën',
     'more_news'             => 'Meer nieuws',
     'news'                  => 'Nieuws',
 
