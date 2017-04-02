@@ -12,6 +12,9 @@ class NewsItem extends \App\Models\NewsItem
 {
     use IsPublic;
 
+    /** Change default pagination size */
+    const PAGINATION_SIZE = 15;
+
     /**
      * Get the route key for the model.
      * @return string
