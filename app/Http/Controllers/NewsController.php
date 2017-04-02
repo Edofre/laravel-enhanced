@@ -28,6 +28,7 @@ class NewsController extends Controller
         return view('news.index', [
             'title'          => trans('front.all_news'),
             'newsItems'      => $newsItems,
+            'newsCategory'   => null,
             'newsCategories' => $this->getFilterCategories(),
         ]);
     }
@@ -37,7 +38,7 @@ class NewsController extends Controller
      */
     private function getFilterCategories()
     {
-        return NewsCategory::all_public()->sortBy('name')->pluck('name', 'id');
+        return NewsCategory::all_public()->sortBy('name')->pluck('name', 'slug');
     }
 
     /**
@@ -59,6 +60,7 @@ class NewsController extends Controller
         return view('news.index', [
             'title'          => $newsCategory->name,
             'newsItems'      => $newsItems,
+            'newsCategory'   => $newsCategory,
             'newsCategories' => $this->getFilterCategories(),
         ]);
     }

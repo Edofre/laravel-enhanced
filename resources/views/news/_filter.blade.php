@@ -1,4 +1,11 @@
-{{ link_to(route('front.news.index'), trans('front.all_news'), ['class' => $title == trans('front.all_news') ? 'btn btn-active' : 'btn btn-primary']) }}
-@foreach($newsCategories as $newsCategory)
-    {{ link_to(route('front.news.category', ['item' => $newsCategory]), $newsCategory->name, ['class' => $title == $newsCategory->name ? 'btn btn-active' : 'btn btn-primary']) }}
-@endforeach
+<div class="form-group col-sm-6">
+    {!! Form::select('news_category_id', $newsCategories, !is_null($newsCategory) ? $newsCategory->slug : null, ['class' => 'form-control', 'id' => 'newsCategoryFilter', 'placeholder' => trans('front.all_categories')]) !!}
+</div>
+
+@section('js_footer')
+    <script type="text/javascript">
+        $("#newsCategoryFilter").change(function () {
+            window.location.replace('/news/' + $(this).val());
+        });
+    </script>
+@endsection
