@@ -11,7 +11,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Home</div>
                     <div class="panel-body">
-                        // Home
+                        <p>
+                            This application is the basic starting template for a new Laravel application.
+                        </p>
                     </div>
                 </div>
             </div>
