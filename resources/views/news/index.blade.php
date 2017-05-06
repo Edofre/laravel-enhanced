@@ -29,9 +29,7 @@
                                     @include('news._item')
                                 </div>
                             @endforeach
-
                         </div>
-
                         <div class="col-sm-12">
                             {{ $newsItems->appends(!empty($search) ? ['search'=> $search] : null)->links() }}
                         </div>

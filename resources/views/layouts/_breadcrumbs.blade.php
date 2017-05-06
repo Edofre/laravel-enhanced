@@ -1,5 +1,5 @@
 @if(!empty($breadcrumbs))
-    <ol class="breadcrumb">
+    <ol class="breadcrumb well well-sm">
         @php
             $keys = array_keys($breadcrumbs);
             $last_key = array_pop($keys);
