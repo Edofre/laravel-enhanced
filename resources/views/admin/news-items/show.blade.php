@@ -20,8 +20,16 @@
                             <dl class="dl-horizontal">
                                 <dt>{!! Form::label('slug', trans('common.slug')) !!}</dt>
                                 <dd>
-                                    <div class="well well-sm">{{ route('front.news.show', ['item' => $newsItem->slug]) }}</div>
+                                    <div class="well well-sm">
+                                        @php
+                                            $route = route('front.news.show', ['item' => $newsItem->slug]);
+                                        @endphp
+                                        <a href="{{ $route }}" target="_blank">
+                                            {{ $route }}
+                                        </a>
+                                    </div>
                                 </dd>
+
                             </dl>
                             <div class="col-sm-6">
                                 <dl class="dl-horizontal">
