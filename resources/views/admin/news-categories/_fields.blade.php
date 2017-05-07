@@ -23,7 +23,7 @@
 
 <div class="btn-group col-sm-12">
     {!! Form::submit(trans('common.save'), ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('admin.newsCategories.index') !!}" class="btn btn-default">{{ trans('common.cancel') }}</a>
+    <a href="{!! route('admin.news-categories.index') !!}" class="btn btn-default">{{ trans('common.cancel') }}</a>
 </div>
 
 @section('js_footer')

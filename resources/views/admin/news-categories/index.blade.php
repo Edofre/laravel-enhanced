@@ -8,7 +8,7 @@
                     <div class="panel-heading clearfix">
                         <h1 class="panel-title pull-left">{{ trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}</h1>
                         <div class="btn-group pull-right">
-                            <a class="btn btn-primary" href="{!! route('admin.newsCategories.create') !!}">{{ trans('crud.create') }}</a>
+                            <a class="btn btn-primary" href="{!! route('admin.news-categories.create') !!}">{{ trans('crud.create') }}</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -28,10 +28,10 @@
                                         <td>{!! str_limit($newsCategory->description, 20) !!}</td>
                                         <td>@boolean($newsCategory->is_public)</td>
                                         <td>
-                                            {!! Form::open(['route' => ['admin.newsCategories.destroy', $newsCategory->id], 'method' => 'delete']) !!}
+                                            {!! Form::open(['route' => ['admin.news-categories.destroy', $newsCategory->id], 'method' => 'delete']) !!}
                                             <div class='btn-group'>
-                                                <a href="{!! route('admin.newsCategories.show', [$newsCategory->id]) !!}" title="{{ trans('crud.show') }}" class='btn btn-default'><i class="glyphicon glyphicon-eye-open"></i></a>
-                                                <a href="{!! route('admin.newsCategories.edit', [$newsCategory->id]) !!}" title="{{ trans('crud.edit') }}" class='btn btn-default'><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="{!! route('admin.news-categories.show', [$newsCategory->id]) !!}" title="{{ trans('crud.show') }}" class='btn btn-default'><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                <a href="{!! route('admin.news-categories.edit', [$newsCategory->id]) !!}" title="{{ trans('crud.edit') }}" class='btn btn-default'><i class="glyphicon glyphicon-edit"></i></a>
                                                 {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'title'=> trans('crud.delete'),'class' => 'btn btn-danger', 'onclick' => "return confirm('".trans('crud.are_you_sure')."')"]) !!}
                                             </div>
                                             {!! Form::close() !!}

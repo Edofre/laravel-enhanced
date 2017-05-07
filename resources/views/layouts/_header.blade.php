@@ -26,8 +26,8 @@
                     <li><a href="{{ route('login') }}">{{ trans('auth.general.login') }}</a></li>
                     <li><a href="{{ route('register') }}">{{ trans('auth.general.register') }}</a></li>
                 @else
-                    <li><a href="{{ route('admin.newsCategories.index') }}">{{ trans('newsCategories.news_categories') }}</a></li>
-                    <li><a href="{{ route('admin.newsItems.index') }}">{{ trans('newsItems.news_items') }}</a></li>
+                    <li><a href="{{ route('admin.news-categories.index') }}">{{ trans('newsCategories.news_categories') }}</a></li>
+                    <li><a href="{{ route('admin.news-items.index') }}">{{ trans('newsItems.news_items') }}</a></li>
                     <li><a href="{{ route('admin.tags.index') }}">{{ trans('tags.tags') }}</a></li>
                     <li><a href="{{ route('admin.users.index') }}">{{ trans('users.users') }}</a></li>
                     <li class="dropdown">

@@ -30,7 +30,7 @@ class NewsItemController extends Controller
         parent::__construct();
 
         // Set the breadcrumbs
-        $this->breadcrumb_route = route('admin.newsItems.index');
+        $this->breadcrumb_route = route('admin.news-items.index');
         $this->breadcrumb_name = trans('newsItems.news_items');
     }
 
@@ -57,7 +57,7 @@ class NewsItemController extends Controller
                 ->paginate(NewsItem::PAGINATION_SIZE);
         }
 
-        return view('admin.newsItems.index', [
+        return view('admin.news-items.index', [
             'newsItems'   => $newsItems,
             'newsItem'    => $newsItem,
             'breadcrumbs' => $this->getBreadcrumbs(),
@@ -71,10 +71,10 @@ class NewsItemController extends Controller
     public function show($id)
     {
         $newsItem = NewsItem::findOrFail($id);
-        return view('admin.newsItems.show')
+        return view('admin.news-items.show')
             ->with('newsItem', $newsItem)
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.newsItems.show', $newsItem), 'name' => $newsItem->title],
+                ['route' => route('admin.news-items.show', $newsItem), 'name' => $newsItem->title],
             ]));
     }
 
@@ -85,10 +85,10 @@ class NewsItemController extends Controller
     {
         $newsItem = new NewsItem;
 
-        return view('admin.newsItems.create')
+        return view('admin.news-items.create')
             ->with('newsItem', $newsItem)
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.newsItems.create'), 'name' => trans('crud.create_model', ['model' => strtolower(trans('newsItems.news_item'))])],
+                ['route' => route('admin.news-items.create'), 'name' => trans('crud.create_model', ['model' => strtolower(trans('newsItems.news_item'))])],
             ]));
     }
 
@@ -99,10 +99,10 @@ class NewsItemController extends Controller
     public function edit($id)
     {
         $newsItem = NewsItem::findOrFail($id);
-        return view('admin.newsItems.edit')
+        return view('admin.news-items.edit')
             ->with('newsItem', $newsItem)
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.newsItems.edit', $newsItem), 'name' => trans('crud.edit_name', ['name' => $newsItem->title])],
+                ['route' => route('admin.news-items.edit', $newsItem), 'name' => trans('crud.edit_name', ['name' => $newsItem->title])],
             ]));
     }
 
@@ -122,7 +122,7 @@ class NewsItemController extends Controller
         $newsItem->syncTags($newsItem, $request);
 
         flash(trans('crud.created_model', ['model' => strtolower(trans('newsItems.news_item'))]), 'success');
-        return redirect()->route('admin.newsItems.show', $newsItem);
+        return redirect()->route('admin.news-items.show', $newsItem);
     }
 
     /**
@@ -148,7 +148,7 @@ class NewsItemController extends Controller
         $newsItem->syncTags($newsItem, $request);
 
         flash(trans('crud.updated_model', ['model' => strtolower(trans('newsItems.news_item'))]), 'success');
-        return redirect()->route('admin.newsItems.show', $newsItem);
+        return redirect()->route('admin.news-items.show', $newsItem);
     }
 
 
@@ -163,7 +163,7 @@ class NewsItemController extends Controller
         $newsItem->delete();
 
         flash(trans('crud.deleted_model', ['model' => strtolower(trans('newsItems.news_item'))]), 'success');
-        return redirect()->route('admin.newsItems.index');
+        return redirect()->route('admin.news-items.index');
     }
 
     /**

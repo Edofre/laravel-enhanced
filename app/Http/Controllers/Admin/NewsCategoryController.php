@@ -31,7 +31,7 @@ class NewsCategoryController extends Controller
         parent::__construct();
 
         // Set the breadcrumbs
-        $this->breadcrumb_route = route('admin.newsCategories.index');
+        $this->breadcrumb_route = route('admin.news-categories.index');
         $this->breadcrumb_name = trans('newsCategories.news_categories');
     }
 
@@ -55,7 +55,7 @@ class NewsCategoryController extends Controller
             ->orderBy('name')
             ->paginate(NewsCategory::PAGINATION_SIZE);
 
-        return view('admin.newsCategories.index', [
+        return view('admin.news-categories.index', [
             'newsCategories' => $newsCategories,
             'search'         => $search,
             'breadcrumbs'    => $this->getBreadcrumbs(),
@@ -69,11 +69,11 @@ class NewsCategoryController extends Controller
     public function show($id)
     {
         $newsCategory = NewsCategory::findOrFail($id);
-        return view('admin.newsCategories.show')
+        return view('admin.news-categories.show')
             ->with('newsCategory', $newsCategory)
             ->with('newsItems', $newsCategory->newsItems()->orderBy('created_at', 'DESC')->paginate(NewsItem::PAGINATION_SIZE))
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.newsCategories.show', $newsCategory), 'name' => $newsCategory->name],
+                ['route' => route('admin.news-categories.show', $newsCategory), 'name' => $newsCategory->name],
             ]));
     }
 
@@ -83,10 +83,10 @@ class NewsCategoryController extends Controller
     public function create()
     {
         $newsCategory = new NewsCategory;
-        return view('admin.newsCategories.create')
+        return view('admin.news-categories.create')
             ->with('newsCategory', $newsCategory)
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.newsCategories.create'), 'name' => trans('crud.create_model', ['model' => strtolower(trans('newsCategories.news_category'))])],
+                ['route' => route('admin.news-categories.create'), 'name' => trans('crud.create_model', ['model' => strtolower(trans('newsCategories.news_category'))])],
             ]));
     }
 
@@ -97,10 +97,10 @@ class NewsCategoryController extends Controller
     public function edit($id)
     {
         $newsCategory = NewsCategory::findOrFail($id);
-        return view('admin.newsCategories.edit')
+        return view('admin.news-categories.edit')
             ->with('newsCategory', $newsCategory)
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.newsCategories.edit', $newsCategory), 'name' => trans('crud.edit_name', ['name' => $newsCategory->name])],
+                ['route' => route('admin.news-categories.edit', $newsCategory), 'name' => trans('crud.edit_name', ['name' => $newsCategory->name])],
             ]));
     }
 
@@ -117,7 +117,7 @@ class NewsCategoryController extends Controller
         $newsCategory->save();
 
         flash(trans('crud.created_model', ['model' => strtolower(trans('newsCategories.news_category'))]), 'success');
-        return redirect()->route('admin.newsCategories.show', $newsCategory);
+        return redirect()->route('admin.news-categories.show', $newsCategory);
     }
 
     /**
@@ -138,7 +138,7 @@ class NewsCategoryController extends Controller
         $newsCategory->save();
 
         flash(trans('crud.updated_model', ['model' => strtolower(trans('newsCategories.news_category'))]), 'success');
-        return redirect()->route('admin.newsCategories.show', $newsCategory);
+        return redirect()->route('admin.news-categories.show', $newsCategory);
     }
 
     /**
@@ -152,7 +152,7 @@ class NewsCategoryController extends Controller
         $newsCategory->delete();
 
         flash(trans('crud.deleted_model', ['model' => strtolower(trans('newsCategories.news_category'))]), 'success');
-        return redirect()->route('admin.newsCategories.index');
+        return redirect()->route('admin.news-categories.index');
     }
 
     /**

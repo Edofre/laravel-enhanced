@@ -31,12 +31,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'as' => 'admin.'],
     // User management
     Route::resource('users', 'Admin\UserController');
     // NewsCategories
-    Route::get('newsCategories/ajax-form-data', ['uses' => 'Admin\NewsCategoryController@ajaxFormData'])->name('news_categories.ajax_form_data');
-    Route::resource('newsCategories', 'Admin\NewsCategoryController');
+    Route::get('news-categories/ajax-form-data', ['uses' => 'Admin\NewsCategoryController@ajaxFormData'])->name('news_categories.ajax_form_data');
+    Route::resource('news-categories', 'Admin\NewsCategoryController');
     // NewsItems
-    Route::get('newsItems/ajax-form-data', ['uses' => 'Admin\NewsItemController@ajaxFormData'])->name('news_items.ajax_form_data');
-    Route::post('newsItems/order', ['uses' => 'Admin\NewsItemController@order'])->name('news_items.order');
-    Route::resource('newsItems', 'Admin\NewsItemController');
+    Route::get('news-items/ajax-form-data', ['uses' => 'Admin\NewsItemController@ajaxFormData'])->name('news_items.ajax_form_data');
+    Route::post('news-items/order', ['uses' => 'Admin\NewsItemController@order'])->name('news_items.order');
+    Route::resource('news-items', 'Admin\NewsItemController');
     // Tags
     Route::get('tags/ajax-form-data', ['uses' => 'Admin\TagController@ajaxFormData'])->name('tags.ajax_form_data');
     Route::resource('tags', 'Admin\TagController');

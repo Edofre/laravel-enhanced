@@ -7,10 +7,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <h1 class="panel-title pull-left">{{ trans('crud.show_name', ['name' => $newsCategory->name]) }}</h1>
-                        {!! Form::open(['route' => ['admin.newsCategories.destroy', $newsCategory->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['admin.news-categories.destroy', $newsCategory->id], 'method' => 'delete']) !!}
                         <div class="btn-group pull-right">
-                            <a class="btn btn-primary" href="{!! route('admin.newsCategories.index') !!}">{{ trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}</a>
-                            <a class="btn btn-warning" href="{!! route('admin.newsCategories.edit', $newsCategory->id) !!}">{{ trans('crud.edit_current', ['model'=> strtolower(trans('newsCategories.news_category'))]) }}</a>
+                            <a class="btn btn-primary" href="{!! route('admin.news-categories.index') !!}">{{ trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}</a>
+                            <a class="btn btn-warning" href="{!! route('admin.news-categories.edit', $newsCategory->id) !!}">{{ trans('crud.edit_current', ['model'=> strtolower(trans('newsCategories.news_category'))]) }}</a>
                             {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'title'=> trans('crud.delete'),'class' => 'btn btn-danger delete-news-category', 'onclick' => "return confirm('".trans('crud.are_you_sure')."')"]) !!}
                         </div>
                         {!! Form::close() !!}
@@ -86,10 +86,10 @@
                                         <td>{!! str_limit($newsItem->intro, 20) !!}</td>
                                         <td>{{ !is_null($newsItem->newsCategory) ? $newsItem->newsCategory->name : null }}</td>
                                         <td>
-                                            {!! Form::open(['route' => ['admin.newsItems.destroy', $newsItem->id], 'method' => 'delete']) !!}
+                                            {!! Form::open(['route' => ['admin.news-items.destroy', $newsItem->id], 'method' => 'delete']) !!}
                                             <div class='btn-group'>
-                                                <a href="{!! route('admin.newsItems.show', [$newsItem->id]) !!}" title="{{ trans('crud.show') }}" class='btn btn-default'><i class="glyphicon glyphicon-eye-open"></i></a>
-                                                <a href="{!! route('admin.newsItems.edit', [$newsItem->id]) !!}" title="{{ trans('crud.edit') }}" class='btn btn-default'><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="{!! route('admin.news-items.show', [$newsItem->id]) !!}" title="{{ trans('crud.show') }}" class='btn btn-default'><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                <a href="{!! route('admin.news-items.edit', [$newsItem->id]) !!}" title="{{ trans('crud.edit') }}" class='btn btn-default'><i class="glyphicon glyphicon-edit"></i></a>
                                                 {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'title'=> trans('crud.delete'),'class' => 'btn btn-danger', 'onclick' => "return confirm('".trans('crud.are_you_sure')."')"]) !!}
                                             </div>
                                             {!! Form::close() !!}
