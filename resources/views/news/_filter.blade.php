@@ -7,5 +7,13 @@
         $("#newsCategoryFilter").change(function () {
             window.location.replace('/news/' + $(this).val());
         });
+
+        $(document).ready(function () {
+            $('#newsCategoryFilter').select2({
+                placeholder: "{{ trans('front.filter_news') }}",
+                allowClear: true,
+                theme: "bootstrap",
+            });
+        });
     </script>
 @endsection

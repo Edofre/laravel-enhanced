@@ -14,6 +14,7 @@ return [
     /** News */
     'news_items'            => 'News',
     'all_news'              => 'All news',
+    'filter_news'           => 'Filter news',
     'all_categories'        => 'All categories',
     'more_news'             => 'More news',
     'news'                  => 'News',
