@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <h1 class="panel-title pull-left">{{ trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}</h1>
+                        <h1 class="panel-title pull-left">{{ $title }}</h1>
                         <div class="btn-group pull-right">
                             <a class="btn btn-primary" href="{!! route('admin.news-categories.create') !!}">{{ trans('crud.create') }}</a>
                         </div>

@@ -11,6 +11,7 @@ return [
     'view_all'        => 'View all :model',
     'no_models_found' => 'No :model found',
     'count_models'    => ':count found',
+    'results_for'     => 'Results for ":keyword"',
 
     /** Create */
     'create_model'    => 'Create :model',

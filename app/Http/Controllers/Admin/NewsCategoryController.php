@@ -56,6 +56,7 @@ class NewsCategoryController extends Controller
             ->paginate(NewsCategory::PAGINATION_SIZE);
 
         return view('admin.news-categories.index', [
+            'title' => $search ? trans('crud.results_for', ['keyword' => $search]) : trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]),
             'newsCategories' => $newsCategories,
             'search'         => $search,
             'breadcrumbs'    => $this->getBreadcrumbs(),

@@ -11,6 +11,7 @@ return [
     'view_all'        => 'Bekijk alle :model',
     'no_models_found' => 'Geen :model gevonden',
     'count_models'    => ':count gevonden',
+    'results_for'     => 'Resultaten voor ":keyword"',
 
     /** Create */
     'create_model'    => 'Nieuw :model',
