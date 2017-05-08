@@ -16,13 +16,12 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                &nbsp;<li><a href="{{ route('front.news.index') }}">{{ trans('newsItems.news') }}</a></li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ route('front.news.index') }}">{{ trans('newsItems.news') }}</a></li>
                     <li><a href="{{ route('login') }}">{{ trans('auth.general.login') }}</a></li>
                     <li><a href="{{ route('register') }}">{{ trans('auth.general.register') }}</a></li>
                 @else
