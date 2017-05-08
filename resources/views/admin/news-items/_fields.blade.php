@@ -71,7 +71,7 @@
                 allowClear: true,
                 theme: "bootstrap",
                 ajax: {
-                    url: "/admin/newsCategories/ajax-form-data",
+                    url: "/admin/news-categories/ajax-form-data",
                     dataType: 'json',
                     data: function (params) {
                         return {
