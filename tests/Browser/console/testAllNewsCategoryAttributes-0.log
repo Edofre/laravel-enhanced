@@ -1,0 +1,14 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/laravel-enhanced.dev\/images\/http:\/lorempixel.com\/640\/480?99168 - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1495054492745
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/laravel-enhanced.dev\/images\/http:\/lorempixel.com\/640\/480?99168 - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1495054493318
+    }
+]

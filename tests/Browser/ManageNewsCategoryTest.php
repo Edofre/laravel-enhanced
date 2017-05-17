@@ -22,19 +22,19 @@ class ManageNewsCategoryTest extends DuskTestCase
     public function testNewsCategoryIndex()
     {
         $user = factory(User::class)->create([
-            'email' => 'edo@example.com',
+            'email' => 'new-edo@example.com',
         ]);
 
         $this->browse(function ($browser) use ($user) {
             // Make sure we can't see it without logging in
             $browser
-                ->visit(route('admin.news_categories.index'))
+                ->visit(route('admin.news-categories.index'))
                 ->assertDontSee('View all news categories')// We don't see the title
                 ->assertSee('Login'); // We see the login page
 
             $browser
                 ->loginAs($user)
-                ->visit(route('admin.news_categories.index'))
+                ->visit(route('admin.news-categories.index'))
                 ->assertSee('View all news categories');
         });
     }
@@ -52,7 +52,7 @@ class ManageNewsCategoryTest extends DuskTestCase
         $this->browse(function ($browser) use ($user) {
             $browser
                 ->loginAs($user)
-                ->visit(route('admin.news_categories.create'))
+                ->visit(route('admin.news-categories.create'))
                 ->assertSee('Create news category')
                 ->type('name', 'My cool new news category!')
                 ->press('Save')
@@ -80,7 +80,7 @@ class ManageNewsCategoryTest extends DuskTestCase
         $this->browse(function ($browser) use ($user, $news_category) {
             $browser
                 ->loginAs($user)
-                ->visit(route('admin.news_categories.show', [$news_category->id]))
+                ->visit(route('admin.news-categories.show', [$news_category->id]))
                 ->assertSee('Show My Test NewsCategory');
         });
     }
@@ -104,9 +104,9 @@ class ManageNewsCategoryTest extends DuskTestCase
         $this->browse(function ($browser) use ($user, $news_category) {
             $browser
                 ->loginAs($user)
-                ->visit(route('admin.news_categories.show', [$news_category->id]))
+                ->visit(route('admin.news-categories.show', [$news_category->id]))
                 ->assertSee('Show My Test NewsCategory')
-                ->visit(route('admin.news_categories.edit', [$news_category->id]))
+                ->visit(route('admin.news-categories.edit', [$news_category->id]))
                 ->type('name', 'My Updated Test NewsCategory!')
                 ->press('Save')
                 ->assertSee('Show My Updated Test NewsCategory')
@@ -133,7 +133,7 @@ class ManageNewsCategoryTest extends DuskTestCase
         $this->browse(function ($browser) use ($user, $news_category) {
             $browser
                 ->loginAs($user)
-                ->visit(route('admin.news_categories.show', [$news_category->id]))
+                ->visit(route('admin.news-categories.show', [$news_category->id]))
                 ->assertSee('Show My Test NewsCategory')
                 ->click('.delete-news-category')
                 ->acceptDialog()
@@ -161,9 +161,9 @@ class ManageNewsCategoryTest extends DuskTestCase
         $this->browse(function ($browser) use ($user, $news_category) {
             $browser
                 ->loginAs($user)
-                ->visit(route('admin.news_categories.show', [$news_category->id]))
+                ->visit(route('admin.news-categories.show', [$news_category->id]))
                 ->assertSee('Show My Test NewsCategory')
-                ->visit(route('admin.news_categories.edit', [$news_category->id]))
+                ->visit(route('admin.news-categories.edit', [$news_category->id]))
                 ->check('is_public')
                 ->type('name', 'My Updated Test NewsCategory!')
                 //                ->type('description', 'This is my test description')
