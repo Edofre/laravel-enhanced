@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d8c9f49bea7dcb1e66cd3f74545f82b",
+    "content-hash": "e9fb2b011aafae2dc4123499855b9b44",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3117,21 +3117,22 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v1.0.7",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "8c7ee8c7e99f8a6feb0c88410ef6a389fc28196e"
+                "reference": "6b81e97ae1ce384e3d8dbd020b2b9751c1449889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/8c7ee8c7e99f8a6feb0c88410ef6a389fc28196e",
-                "reference": "8c7ee8c7e99f8a6feb0c88410ef6a389fc28196e",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/6b81e97ae1ce384e3d8dbd020b2b9751c1449889",
+                "reference": "6b81e97ae1ce384e3d8dbd020b2b9751c1449889",
                 "shasum": ""
             },
             "require": {
                 "facebook/webdriver": "~1.0",
-                "illuminate/support": "~5.3",
+                "illuminate/console": "~5.4",
+                "illuminate/support": "~5.4",
                 "nesbot/carbon": "~1.20",
                 "php": ">=5.6.4",
                 "symfony/console": "~3.2",
@@ -3168,7 +3169,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2017-02-22T15:25:37+00:00"
+            "time": "2017-04-23T17:13:04+00:00"
         },
         {
             "name": "mockery/mockery",
