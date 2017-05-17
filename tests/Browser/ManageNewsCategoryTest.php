@@ -110,7 +110,7 @@ class ManageNewsCategoryTest extends DuskTestCase
                 ->type('name', 'My Updated Test NewsCategory!')
                 ->press('Save')
                 ->assertSee('Show My Updated Test NewsCategory')
-                ->assertPathIs('/admin/newsCategories/' . $news_category->id);
+                ->assertPathIs('/admin/news-categories/' . $news_category->id);
         });
     }
 
@@ -138,7 +138,7 @@ class ManageNewsCategoryTest extends DuskTestCase
                 ->click('.delete-news-category')
                 ->acceptDialog()
                 ->assertSee('Successfully deleted news category')
-                ->assertPathIs('/admin/newsCategories');
+                ->assertPathIs('/admin/news-categories');
         });
     }
 
@@ -172,7 +172,7 @@ class ManageNewsCategoryTest extends DuskTestCase
                 ->assertSee('Show My Updated Test NewsCategory')
                 ->assertVisible('.news-category-image')
                 //                ->assertSee('his is my test description')
-                ->assertPathIs('/admin/newsCategories/' . $news_category->id);
+                ->assertPathIs('/admin/news-categories/' . $news_category->id);
         });
     }
 }
