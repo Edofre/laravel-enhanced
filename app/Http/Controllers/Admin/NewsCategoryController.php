@@ -32,7 +32,7 @@ class NewsCategoryController extends Controller
 
         // Set the breadcrumbs
         $this->breadcrumb_route = route('admin.news-categories.index');
-        $this->breadcrumb_name = trans('newsCategories.news_categories');
+        $this->breadcrumb_name = trans('news-categories.news_categories');
     }
 
     /**
@@ -56,7 +56,7 @@ class NewsCategoryController extends Controller
             ->paginate(NewsCategory::PAGINATION_SIZE);
 
         return view('admin.news-categories.index', [
-            'title' => $search ? trans('crud.results_for', ['keyword' => $search]) : trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]),
+            'title' => $search ? trans('crud.results_for', ['keyword' => $search]) : trans('crud.view_all', ['model'=> strtolower(trans('news-categories.news_categories'))]),
             'newsCategories' => $newsCategories,
             'search'         => $search,
             'breadcrumbs'    => $this->getBreadcrumbs(),
@@ -87,7 +87,7 @@ class NewsCategoryController extends Controller
         return view('admin.news-categories.create')
             ->with('newsCategory', $newsCategory)
             ->with('breadcrumbs', $this->getBreadcrumbs([
-                ['route' => route('admin.news-categories.create'), 'name' => trans('crud.create_model', ['model' => strtolower(trans('newsCategories.news_category'))])],
+                ['route' => route('admin.news-categories.create'), 'name' => trans('crud.create_model', ['model' => strtolower(trans('news-categories.news_category'))])],
             ]));
     }
 
@@ -117,7 +117,7 @@ class NewsCategoryController extends Controller
         $newsCategory->image_url = $this->saveImage($request);
         $newsCategory->save();
 
-        flash(trans('crud.created_model', ['model' => strtolower(trans('newsCategories.news_category'))]), 'success');
+        flash(trans('crud.created_model', ['model' => strtolower(trans('news-categories.news_category'))]), 'success');
         return redirect()->route('admin.news-categories.show', $newsCategory);
     }
 
@@ -138,7 +138,7 @@ class NewsCategoryController extends Controller
         $newsCategory->image_url = $this->saveImage($request, $newsCategory->image_url);
         $newsCategory->save();
 
-        flash(trans('crud.updated_model', ['model' => strtolower(trans('newsCategories.news_category'))]), 'success');
+        flash(trans('crud.updated_model', ['model' => strtolower(trans('news-categories.news_category'))]), 'success');
         return redirect()->route('admin.news-categories.show', $newsCategory);
     }
 
@@ -152,7 +152,7 @@ class NewsCategoryController extends Controller
         $newsCategory = NewsCategory::findOrFail($id);
         $newsCategory->delete();
 
-        flash(trans('crud.deleted_model', ['model' => strtolower(trans('newsCategories.news_category'))]), 'success');
+        flash(trans('crud.deleted_model', ['model' => strtolower(trans('news-categories.news_category'))]), 'success');
         return redirect()->route('admin.news-categories.index');
     }
 

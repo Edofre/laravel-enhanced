@@ -9,8 +9,8 @@
                         <h1 class="panel-title pull-left">{{ trans('crud.show_name', ['name' => $newsCategory->name]) }}</h1>
                         {!! Form::open(['route' => ['admin.news-categories.destroy', $newsCategory->id], 'method' => 'delete']) !!}
                         <div class="btn-group pull-right">
-                            <a class="btn btn-primary" href="{!! route('admin.news-categories.index') !!}">{{ trans('crud.view_all', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}</a>
-                            <a class="btn btn-warning" href="{!! route('admin.news-categories.edit', $newsCategory->id) !!}">{{ trans('crud.edit_current', ['model'=> strtolower(trans('newsCategories.news_category'))]) }}</a>
+                            <a class="btn btn-primary" href="{!! route('admin.news-categories.index') !!}">{{ trans('crud.view_all', ['model'=> strtolower(trans('news-categories.news_categories'))]) }}</a>
+                            <a class="btn btn-warning" href="{!! route('admin.news-categories.edit', $newsCategory->id) !!}">{{ trans('crud.edit_current', ['model'=> strtolower(trans('news-categories.news_category'))]) }}</a>
                             {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'title'=> trans('crud.delete'),'class' => 'btn btn-danger delete-news-category', 'onclick' => "return confirm('".trans('crud.are_you_sure')."')"]) !!}
                         </div>
                         {!! Form::close() !!}
@@ -32,13 +32,13 @@
                             </dl>
                             <div class="col-sm-6">
                                 <dl class="dl-horizontal">
-                                    <dt>{!! Form::label('id', trans('newsCategories.id')) !!}</dt>
+                                    <dt>{!! Form::label('id', trans('news-categories.id')) !!}</dt>
                                     <dd>{{ $newsCategory->id }}</dd>
-                                    <dt>{!! Form::label('is_public', trans('newsCategories.is_public')) !!}</dt>
+                                    <dt>{!! Form::label('is_public', trans('news-categories.is_public')) !!}</dt>
                                     <dd>@boolean($newsCategory->is_public)</dd>
-                                    <dt>{!! Form::label('name', trans('newsCategories.name')) !!}</dt>
+                                    <dt>{!! Form::label('name', trans('news-categories.name')) !!}</dt>
                                     <dd>{{ $newsCategory->name }}</dd>
-                                    <dt>{!! Form::label('image_url', trans('newsCategories.image_url')) !!}</dt>
+                                    <dt>{!! Form::label('image_url', trans('news-categories.image_url')) !!}</dt>
                                     <dd>@html($newsCategory->getImage($newsCategory->image_url, $newsCategory->name, ['class' => 'news-category-image','width' => '300px']))</dd>
                                 </dl>
                             </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <h1 class="panel-title pull-left">{!! Form::label('description', trans('newsCategories.description')) !!}</h1>
+                        <h1 class="panel-title pull-left">{!! Form::label('description', trans('news-categories.description')) !!}</h1>
                     </div>
                     <div class="panel-body">
                         @html($newsCategory->description)

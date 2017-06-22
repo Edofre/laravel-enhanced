@@ -15,9 +15,9 @@
                         @include('admin.common._search')
                         <table class="table table-responsive" id="news-category-table">
                             <thead>
-                            <th>{{ trans('newsCategories.name') }}</th>
-                            <th>{{ trans('newsCategories.description') }}</th>
-                            <th>{{ trans('newsCategories.is_public') }}</th>
+                            <th>{{ trans('news-categories.name') }}</th>
+                            <th>{{ trans('news-categories.description') }}</th>
+                            <th>{{ trans('news-categories.is_public') }}</th>
                             <th colspan="3">{{ trans('crud.actions') }}</th>
                             </thead>
                             <tbody>
@@ -41,7 +41,7 @@
                             @else
                                 <tr>
                                     <td>
-                                        {{ trans('crud.no_models_found', ['model'=> strtolower(trans('newsCategories.news_categories'))]) }}
+                                        {{ trans('crud.no_models_found', ['model'=> strtolower(trans('news-categories.news_categories'))]) }}
                                     </td>
                                 </tr>
                             @endif

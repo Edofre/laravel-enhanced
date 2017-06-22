@@ -1,13 +1,13 @@
 <div class="form-group col-sm-6">
-    {!! Form::label('is_public', trans('newsCategories.is_public')) !!}
+    {!! Form::label('is_public', trans('news-categories.is_public')) !!}
     {!! Form::checkbox('is_public', 1, old('is_public'), ['class' => 'form-control']) !!}
 </div>
 <div class="form-group col-sm-6">
-    {!! Form::label('name', trans('newsCategories.name')) !!}
+    {!! Form::label('name', trans('news-categories.name')) !!}
     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
 </div>
 <div class="form-group col-sm-12">
-    {!! Form::label('description', trans('newsCategories.description')) !!}
+    {!! Form::label('description', trans('news-categories.description')) !!}
     {!! Form::textArea('description', old('description'), ['class' => 'form-control']) !!}
 </div>
 <div class="form-group col-md-6">
@@ -17,7 +17,7 @@
             <p>{{ trans('common.uploading_new_file') }}</p>
         </div>
     @endif
-    {!! Form::label('upload_file', trans('newsCategories.image_url')) !!}
+    {!! Form::label('upload_file', trans('news-categories.image_url')) !!}
     {!! Form::file('upload_file', ['class' => 'form-control']) !!}
 </div>
 
